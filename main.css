@@ -1,0 +1,187 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    overflow: hidden;
+    position: relative;
+  }
+  
+  .container {
+    text-align: center;
+    position: relative;
+    z-index: 1; /* Ensure this is lower than the canvas */
+  }
+  
+  #canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2; /* Higher than the container */
+  }
+  
+  .countdown, .message {
+    display: none;
+  }
+  
+  #timer {
+    font-size: 3em;
+  }
+  
+  .message .container .banner {
+    font-size: 2.5em;
+    animation: fadeIn 2s ease-in-out;
+  }
+  
+  h1, p {
+    margin-bottom: 0px;
+  }
+  
+  .message .container .content {
+    font-size: 1.2em;
+    animation: fadeIn 2s ease-in-out;
+  }
+  
+  .photo {
+    width: 300px; /* Adjust as needed */
+    height: auto;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  .cake {
+    position: absolute;
+    top: 110px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 300px; /* $cake_width */
+    margin: 0 auto;
+  }
+  
+  .layer {
+    position: absolute;
+    margin: 0 auto;
+    width: 300px; /* $cake_width */
+    height: 200px; /* $cake_height */
+    border-radius: 150px / 75px; /* $cake_width/2 $cake_width/4 */
+  }
+  
+  .layer-1 {
+    top: 0;
+    z-index: 10;
+    background-color: #BCAA99; /* $cake_bg_coffee */
+  }
+  
+  .layer-2 {
+    top: calc(200px / 4); /* $cake_height / 4 */
+    z-index: 9;
+    background-color: #F2F7F2; /* $cake_bg_cream */
+  }
+  
+  .layer-3 {
+    top: calc(2 * 200px / 4); /* 2 * $cake_height / 4 */
+    z-index: 8;
+    background-color: #BCAA99; /* $cake_bg_coffee */
+  }
+  
+  .layer-4 {
+    top: calc(3 * 200px / 4); /* 3 * $cake_height / 4 */
+    z-index: 7;
+    background-color: #8E5572; /* $cake_bg_cherry */
+  }
+  
+  .layer-top {
+    top: 0;
+    z-index: 12;
+    background: #F2F7F2; /* $cake_bg_cream */
+    height: 150px; /* $cake_width / 2 */
+  }
+  
+  .layer-top-cream1, .layer-top-cream2 {
+    position: absolute;
+    width: 75px; /* $cake_width / 4 */
+    transform: skew(0deg, 18deg);
+    border-radius: 0 0 78% 40% / 0 0 92% 74%;
+    height: 50px; /* $cake_height / 4 */
+    top: 123px;
+    background: #e5e7e5; /* $cake_cream_side */
+    z-index: 11;
+  }
+  
+  .layer-top-cream1 {
+    left: 74px;
+  }
+  
+  .layer-top-cream2 {
+    left: 16px;
+  }
+  
+  .candle {
+    position: absolute;
+    top: calc(80px - 100px); /* 80px - $candle_height */
+    left: calc(300px / 2 - 30px / 2); /* $cake_width / 2 - $candle_width / 2 */
+    z-index: 12;
+    background: #BBBE64; /* $cake_bg_spinach */
+    width: 30px; /* $candle_width */
+    height: 100px; /* $candle_height */
+  }
+  
+  .candle:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 30px; /* $candle_width */
+    height: calc(100px / 3); /* $candle_height / 3 */
+    border-radius: 50%;
+    background: #BBBE64; /* $cake_bg_spinach */
+    display: none;
+  }
+  
+  .candle:before {
+    content: "";
+    position: absolute;
+    background: #ffcb6a;
+    width: 30px; /* $candle_width */
+    height: calc(100px / 2); /* $candle_height / 2 */
+    border-radius: 80% / 70%;
+    top: calc(-100px / 2); /* -$candle_height / 2 */
+    left: calc(50% - 30px / 2); /* 50% - $candle_width / 2 */
+    z-index: 15;
+    box-shadow: 0px 0px 40px #fff, 0 0 75px #ffffff, 0 0 90px #fff, 0 0 100px #fff;
+    animation: flame 3s infinite ease-in-out;
+  }
+  
+  @keyframes flame {
+    0%, 100% {
+        transform: skewX(5deg);
+        box-shadow: 0px 0px 40px #fff, 0 0 75px #ffffff, 0 0 90px #fff, 0 0 100px #fff;
+    }
+    25% {
+        transform: skewX(-10deg);
+        box-shadow: 0px 0px 40px white, 0 0 75px orange, 0 0 90px orange, 0 0 100px white;
+    }
+    50% {
+        transform: skewX(15deg);
+        box-shadow: 0px 0px 40px orange, 0 0 75px orange, 0 0 90px black, 0 0 100px #fff;
+    }
+    75% {
+        transform: skewX(-2deg);
+        box-shadow: 0px 0px 40px #fff, 0 0 75px #ffffff, 0 0 90px #fff, 0 0 100px black;
+    }
+  }
+  
+  .msg {
+    position: absolute;
+    top: calc(200px + 300px); /* $cake_height + 300px */
+    font-family: "Comic Sans MS", Arial, Helvetica, sans-serif;
+    font-size: 60px;
+    text-align: center;
+    color: #F2F7F2; /* $cake_bg_cream */
+    width: 100%;
+  }
+  
